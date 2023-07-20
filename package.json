@@ -19,12 +19,21 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier **/*.js --write"
+    "format": "prettier **/*.js --write",
+    "lint": "tsc"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@mapeo/schema": "github:digidem/mapeo-schema",
+    "json-schema-faker": "^0.5.3"
   },
   "devDependencies": {
+    "@tsconfig/node16": "^16.1.0",
+    "@types/node": "^20.4.2",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
   },
   "prettier": {
     "semi": false,
