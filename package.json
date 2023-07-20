@@ -1,0 +1,36 @@
+{
+  "name": "mapeo-data-generator",
+  "version": "0.1.0",
+  "description": "Module and CLI to generate fake data for Mapeo",
+  "keywords": [
+    "mapeo",
+    "fake",
+    "data"
+  ],
+  "author": {
+    "name": "Andrew Chou",
+    "email": "andrewchou@fastmail.com"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier **/*.js --write"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.js": "npm run format"
+  }
+}
