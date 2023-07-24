@@ -9,24 +9,16 @@ import { JSONSchemaFaker } from 'json-schema-faker'
  * @typedef {Array<SchemaInfo>} SchemaInfoList
  */
 
-const MAPEO_SCHEMAS_PATH = new URL(
-  './node_modules/@mapeo/schema/schema',
-  import.meta.url,
-).pathname
-
-const SCHEMA_DIRECTORY_NAMES = fs.readdirSync(MAPEO_SCHEMAS_PATH)
-
 export function listSchemas() {
   /** @type {{[name: string]: Array<string>}} */
   const result = {}
 
-  for (const schemaName of SCHEMA_DIRECTORY_NAMES) {
+  for (const schema of getMapeoSchemaPaths().schemas) {
     // We skip `common` schema
-    if (schemaName === 'common') continue
-    const schemaDirectoryPath = path.join(MAPEO_SCHEMAS_PATH, schemaName)
-    const schemaVersions = fs.readdirSync(schemaDirectoryPath)
+    if (schema.name === 'common') continue
+    const schemaVersions = fs.readdirSync(schema.path)
 
-    result[schemaName] = schemaVersions.map((v) => path.parse(v).name)
+    result[schema.name] = schemaVersions.map((v) => path.parse(v).name)
   }
 
   return result
@@ -38,7 +30,9 @@ export function listSchemas() {
  * @returns {Promise<Array<JsonValue>>}
  */
 export async function generate(schemaName, { version, count } = {}) {
-  const schemas = readSchemas()
+  const mapeoSchemaPaths = getMapeoSchemaPaths()
+
+  const schemas = readSchemas(mapeoSchemaPaths.schemas)
 
   const commonSchemaInfo = getSchemaInfo(schemas, 'common')
   const targetSchemaInfo = getSchemaInfo(schemas, schemaName, version)
@@ -55,7 +49,7 @@ export async function generate(schemaName, { version, count } = {}) {
     result[i] = await JSONSchemaFaker.resolve(
       targetSchemaInfo.schema,
       { [commonSchemaInfo.path]: commonSchemaInfo.schema },
-      path.join(MAPEO_SCHEMAS_PATH, schemaName),
+      path.join(mapeoSchemaPaths.base, schemaName),
     )
   }
 
@@ -63,13 +57,12 @@ export async function generate(schemaName, { version, count } = {}) {
 }
 
 /**
- * @returns
+ * @param {Array<{name: string, path: string}>} info
  */
-function readSchemas() {
+function readSchemas(info) {
   const nameToSchema = new Map()
 
-  for (const schemaName of SCHEMA_DIRECTORY_NAMES) {
-    const schemaDirectoryPath = path.join(MAPEO_SCHEMAS_PATH, schemaName)
+  for (const { name: schemaName, path: schemaDirectoryPath } of info) {
     const schemaVersions = fs.readdirSync(schemaDirectoryPath)
 
     /** @type {SchemaInfoList} */
@@ -112,4 +105,21 @@ function getSchemaInfo(schemas, name, version) {
   if (!result) throw new Error(`Could not find version ${version}`)
 
   return result
+}
+
+function getMapeoSchemaPaths() {
+  const basePath = new URL(
+    './node_modules/@mapeo/schema/schema',
+    import.meta.url,
+  ).pathname
+
+  const schemaDirNames = fs.readdirSync(basePath)
+
+  return {
+    base: basePath,
+    schemas: schemaDirNames.map((name) => ({
+      name,
+      path: path.join(basePath, name),
+    })),
+  }
 }
