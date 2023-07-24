@@ -1,7 +1,7 @@
 {
-  "name": "mapeo-data-generator",
-  "version": "0.1.0",
-  "description": "Module and CLI to generate fake data for Mapeo",
+  "name": "mapeo-mock-data",
+  "version": "0.0.0",
+  "description": "Module and CLI to generate mock data for Mapeo",
   "keywords": [
     "mapeo",
     "fake",
@@ -14,6 +14,10 @@
   "license": "MIT",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "list-mapeo-schemas": "./bin/list-mapeo-schemas.js",
+    "generate-mapeo-data": "./bin/generate-mapeo-data.js"
+  },
   "exports": {
     ".": "./index.js"
   },
