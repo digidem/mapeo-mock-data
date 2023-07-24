@@ -42,9 +42,9 @@ export async function generate(schemaName, { version, count } = {}) {
   /** @type {Array<JsonValue>} */
   const result = Array(numberToGenerate)
 
-  for (let i = 0; i < numberToGenerate; i++) {
-    JSONSchemaFaker.extend('faker', () => faker)
+  JSONSchemaFaker.extend('faker', () => faker)
 
+  for (let i = 0; i < numberToGenerate; i++) {
     // TODO: Need to specify Faker formats to generate appropriate values and respect enums
     result[i] = await JSONSchemaFaker.resolve(
       targetSchemaInfo.schema,
