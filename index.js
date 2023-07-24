@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
-import { faker } from '@faker-js/faker'
-import { JSONSchemaFaker } from 'json-schema-faker'
+
+import { initializeJsf, createFakerSchema } from './faker.js'
 
 /**
  * @typedef {ReturnType<import('json-schema-faker').JSONSchemaFakerDefine>} JsonValue
@@ -42,13 +42,14 @@ export async function generate(schemaName, { version, count } = {}) {
   /** @type {Array<JsonValue>} */
   const result = Array(numberToGenerate)
 
-  JSONSchemaFaker.extend('faker', () => faker)
+  const JSONSchemaFaker = initializeJsf()
 
   for (let i = 0; i < numberToGenerate; i++) {
-    // TODO: Need to specify Faker formats to generate appropriate values and respect enums
     result[i] = await JSONSchemaFaker.resolve(
-      targetSchemaInfo.schema,
-      { [commonSchemaInfo.path]: commonSchemaInfo.schema },
+      createFakerSchema(targetSchemaInfo.schema),
+      {
+        [commonSchemaInfo.path]: createFakerSchema(commonSchemaInfo.schema),
+      },
       path.join(mapeoSchemaPaths.base, schemaName),
     )
   }
