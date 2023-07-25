@@ -5,14 +5,17 @@ export function initializeJsf() {
   JSONSchemaFaker.extend('faker', () => {
     // @ts-expect-error
     faker.mapeo = {
-      id: () => faker.string.hexadecimal({ length: 32 }),
+      id: () => faker.string.hexadecimal({ length: 32, prefix: '' }),
       links: () =>
-        faker.helpers.multiple(() => faker.string.hexadecimal({ length: 32 }), {
-          count: {
-            min: 0,
-            max: 5,
+        faker.helpers.multiple(
+          () => faker.string.hexadecimal({ length: 32, prefix: '' }),
+          {
+            count: {
+              min: 0,
+              max: 5,
+            },
           },
-        }),
+        ),
     }
 
     return faker
