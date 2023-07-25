@@ -78,7 +78,7 @@ export function createFakerSchema(schema) {
       s.definitions.position.properties.coords.properties.latitude.faker =
         'location.latitude'
 
-      // TODO: Update `refs` manually
+      s.properties.refs.items.properties.id.faker = 'mapeo.id'
 
       return s
     }
