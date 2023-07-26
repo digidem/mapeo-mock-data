@@ -26,7 +26,8 @@
     "prepare": "husky install",
     "format": "prettier **/*.js --write",
     "lint": "eslint . --cache --fix",
-    "types": "tsc"
+    "type": "tsc",
+    "prepack": "npm run type"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
