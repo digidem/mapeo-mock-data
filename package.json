@@ -48,5 +48,13 @@
   },
   "lint-staged": {
     "*.js": "npm run format"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digidem/mapeo-mock-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digidem/mapeo-mock-data/issues"
+  },
+  "homepage": "https://github.com/digidem/mapeo-mock-data#readme"
 }
