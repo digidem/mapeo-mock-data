@@ -25,6 +25,7 @@
   "scripts": {
     "prepare": "husky install",
     "format": "prettier **/*.js --write",
+    "lint": "eslint . --cache --fix",
     "types": "tsc"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@tsconfig/node16": "^16.1.0",
     "@types/node": "^20.4.2",
+    "eslint": "^8.45.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
@@ -46,8 +48,21 @@
     "semi": false,
     "singleQuote": true
   },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    }
+  },
   "lint-staged": {
-    "*.js": "npm run format"
+    "*.js": "npm run lint",
+    "*.{js,md}": "npm run format"
   },
   "repository": {
     "type": "git",
