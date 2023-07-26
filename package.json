@@ -61,8 +61,10 @@
     }
   },
   "lint-staged": {
-    "*.js": "npm run lint",
-    "*.{js,md}": "npm run format"
+    "*.js": [
+      "eslint --cache --fix"
+    ],
+    "*.{js,md}": "prettier --write"
   },
   "repository": {
     "type": "git",
