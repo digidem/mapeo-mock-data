@@ -4,7 +4,6 @@ import fs from 'node:fs'
 import { JSONSchemaFaker, createFakerSchema } from './faker.js'
 
 /**
- * @typedef {ReturnType<import('json-schema-faker').JSONSchemaFakerDefine>} JsonValue
  * @typedef {{version: string, path: string, schema: any}} SchemaInfo
  * @typedef {Array<SchemaInfo>} SchemaInfoList
  */
@@ -27,7 +26,7 @@ export function listSchemas() {
 /**
  * @param {string} schemaName
  * @param {{version?: string, count?: number}} [options]
- * @returns {Promise<Array<JsonValue>>}
+ * @returns {Promise<Array<import('type-fest').JsonValue>>}
  */
 export async function generate(schemaName, { version, count } = {}) {
   const mapeoSchemaPaths = getMapeoSchemaPaths()
@@ -39,7 +38,6 @@ export async function generate(schemaName, { version, count } = {}) {
 
   const numberToGenerate = count || 1
 
-  /** @type {Array<JsonValue>} */
   const result = Array(numberToGenerate)
 
   for (let i = 0; i < numberToGenerate; i++) {

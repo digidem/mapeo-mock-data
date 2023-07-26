@@ -14,6 +14,7 @@
   "license": "MIT",
   "type": "module",
   "main": "index.js",
+  "types": "./types.d.ts",
   "bin": {
     "list-mapeo-schemas": "./bin/list-mapeo-schemas.js",
     "generate-mapeo-data": "./bin/generate-mapeo-data.js"
@@ -30,7 +31,8 @@
     "@faker-js/faker": "^8.0.2",
     "@mapeo/schema": "github:digidem/mapeo-schema",
     "json-schema-faker": "^0.5.3",
-    "remeda": "^1.24.0"
+    "remeda": "^1.24.0",
+    "type-fest": "^4.0.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.0",
