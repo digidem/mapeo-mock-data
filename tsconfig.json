@@ -3,11 +3,17 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "noEmit": true,
     "strict": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./types",
+    "removeComments": true,
   },
+  "include": [
+    "./index.js",
+  ],
   "exclude": [
-    "node_modules",
     "bin"
   ]
 }

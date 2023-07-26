@@ -14,7 +14,7 @@
   "license": "MIT",
   "type": "module",
   "main": "index.js",
-  "types": "./types.d.ts",
+  "types": "types/index.d.ts",
   "bin": {
     "list-mapeo-schemas": "./bin/list-mapeo-schemas.js",
     "generate-mapeo-data": "./bin/generate-mapeo-data.js"
