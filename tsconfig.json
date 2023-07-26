@@ -8,7 +8,6 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./types",
-    "removeComments": true,
   },
   "include": [
     "./index.js",
