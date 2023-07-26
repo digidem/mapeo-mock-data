@@ -25,7 +25,7 @@
   "scripts": {
     "prepare": "husky install",
     "format": "prettier **/*.js --write",
-    "lint": "tsc"
+    "types": "tsc"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
