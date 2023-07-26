@@ -2,32 +2,30 @@ import { JSONSchemaFaker } from 'json-schema-faker'
 import { faker } from '@faker-js/faker'
 import { pipe, setPath } from 'remeda'
 
-export function initializeJsf() {
-  JSONSchemaFaker.extend('faker', () => {
-    return Object.assign(faker, {
-      mapeo: {
-        id: () => faker.string.hexadecimal({ length: 32, prefix: '' }),
-        links: () =>
-          faker.helpers.multiple(
-            () => faker.string.hexadecimal({ length: 32, prefix: '' }),
-            {
-              count: {
-                min: 0,
-                max: 5,
-              },
+JSONSchemaFaker.extend('faker', () => {
+  return Object.assign(faker, {
+    mapeo: {
+      id: () => faker.string.hexadecimal({ length: 32, prefix: '' }),
+      links: () =>
+        faker.helpers.multiple(
+          () => faker.string.hexadecimal({ length: 32, prefix: '' }),
+          {
+            count: {
+              min: 0,
+              max: 5,
             },
-          ),
-      },
-    })
+          },
+        ),
+    },
   })
+})
 
-  return JSONSchemaFaker
-}
+export { JSONSchemaFaker, createFakerSchema }
 
 /**
  * @param {*} schema
  */
-export function createFakerSchema(schema) {
+function createFakerSchema(schema) {
   const { title } = schema
 
   if (!title) throw new Error('Missing `title` field')

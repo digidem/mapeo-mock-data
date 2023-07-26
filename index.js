@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 
-import { initializeJsf, createFakerSchema } from './faker.js'
+import { JSONSchemaFaker, createFakerSchema } from './faker.js'
 
 /**
  * @typedef {ReturnType<import('json-schema-faker').JSONSchemaFakerDefine>} JsonValue
@@ -41,8 +41,6 @@ export async function generate(schemaName, { version, count } = {}) {
 
   /** @type {Array<JsonValue>} */
   const result = Array(numberToGenerate)
-
-  const JSONSchemaFaker = initializeJsf()
 
   for (let i = 0; i < numberToGenerate; i++) {
     result[i] = await JSONSchemaFaker.resolve(
