@@ -26,14 +26,13 @@ example output:
 
 ```json
 {
-  "coreOwnership": ["v1"],
-  "device": ["v1"],
-  "field": ["v1"],
-  "filter": ["v1"],
-  "observation": ["v4", "v5"],
-  "preset": ["v1"],
+  "role": ["v1"],
   "project": ["v1"],
-  "role": ["v1"]
+  "preset": ["v2"],
+  "observation": ["v5"],
+  "field": ["v2"],
+  "device": ["v1"],
+  "coreOwnership": ["v1"]
 }
 ```
 
@@ -64,9 +63,9 @@ npx generate-mapeo-data --schema observation --output observations.json
 
 #### `mapeoMockData.generate`
 
-`(schemaName: string, opts?: { version?: string, count?: number }) => Array<SchemaData>`
+`(schemaName: string, opts?: { version?: string, count?: number }) => Promise<Array<MapeoDoc>>`
 
-Returns mocked data for the specified `schemaName`, where `SchemaData` adheres to the schema definition associated with `schemaName`. Accepts the following `opts`:
+Returns mocked data for the specified `schemaName`, where `MapeoDoc` adheres to the schema definition associated with `schemaName`. Accepts the following `opts`:
 
 - `version`: specify the schema version to use
 - `count`: specify the number of records to generate
@@ -79,13 +78,12 @@ Returns the available schemas to generate from and the corresponding versions th
 
 ```js
 {
-  coreOwnership: ["v1"],
-  device: ["v1"],
-  field: ["v1"],
-  filter: ["v1"],
-  observation: ["v4", "v5"],
-  preset: ["v1"],
-  project: ["v1"],
-  role: ["v1"]
+  role: [ 'v1' ],
+  project: [ 'v1' ],
+  preset: [ 'v2' ],
+  observation: [ 'v5' ],
+  field: [ 'v2' ],
+  device: [ 'v1' ],
+  coreOwnership: [ 'v1' ]
 }
 ```

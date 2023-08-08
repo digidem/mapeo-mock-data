@@ -1,52 +1,37 @@
-import path from 'node:path'
-import fs from 'node:fs'
-
+import { docSchemas } from '@mapeo/schema'
 import { JSONSchemaFaker, createFakerSchema } from './lib/faker.js'
-import {
-  readSchemas,
-  getMapeoSchemaPaths,
-  getSchemaInfo,
-} from './lib/schema.js'
+import { extractSchemaVersion, isValidSchemaName } from './lib/schema.js'
 
 export function listSchemas() {
   /** @type {{[name: string]: Array<string>}} */
   const result = {}
 
-  for (const schema of getMapeoSchemaPaths().schemas) {
-    // We skip `common` schema
-    if (schema.name === 'common') continue
-    const schemaVersions = fs.readdirSync(schema.filePath)
-
-    result[schema.name] = schemaVersions.map((v) => path.parse(v).name)
+  for (const [schemaName, schema] of Object.entries(docSchemas)) {
+    result[schemaName] = [extractSchemaVersion(schema.$id)]
   }
 
   return result
 }
 
 /**
- * @param {string} schemaName
+ * @param {import('@mapeo/schema/dist/types.js').SchemaName} schemaName
  * @param {{version?: string, count?: number}} [options]
- * @returns {Promise<Array<import('type-fest').JsonValue>>}
+ * @returns {Promise<Array<import('@mapeo/schema').MapeoDoc>>}
  */
-export async function generate(schemaName, { version, count } = {}) {
-  const mapeoSchemaPaths = getMapeoSchemaPaths()
+export async function generate(schemaName, { count } = {}) {
+  isValidSchemaName(schemaName)
 
-  const schemas = readSchemas(mapeoSchemaPaths.schemas)
-
-  const commonSchemaInfo = getSchemaInfo(schemas, 'common')
-  const targetSchemaInfo = getSchemaInfo(schemas, schemaName, version)
-
+  const targetSchema = docSchemas[schemaName]
   const numberToGenerate = count || 1
 
-  const result = Array(numberToGenerate)
+  /** @type {Array<import('@mapeo/schema').MapeoDoc>} */
+  const result = []
 
   for (let i = 0; i < numberToGenerate; i++) {
-    result[i] = await JSONSchemaFaker.resolve(
-      createFakerSchema(targetSchemaInfo.schema),
-      {
-        [commonSchemaInfo.filePath]: createFakerSchema(commonSchemaInfo.schema),
-      },
-      path.join(mapeoSchemaPaths.base, schemaName),
+    result.push(
+      /** @type {import('@mapeo/schema').MapeoDoc} */ (
+        await JSONSchemaFaker.resolve(createFakerSchema(targetSchema))
+      ),
     )
   }
 

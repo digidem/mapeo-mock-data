@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@mapeo/schema": "github:digidem/mapeo-schema",
+    "@mapeo/schema": "^3.0.0-next.5",
     "json-schema-faker": "^0.5.3",
-    "remeda": "^1.24.0",
+    "protobufjs": "^7.2.4",
     "type-fest": "^4.0.0"
   },
   "devDependencies": {
