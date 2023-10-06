@@ -27,11 +27,12 @@ example output:
 ```json
 {
   "role": ["v1"],
-  "project": ["v1"],
+  "projectSettings": ["v1"],
   "preset": ["v2"],
   "observation": ["v5"],
+  "icon": ["v2"],
   "field": ["v2"],
-  "device": ["v1"],
+  "deviceInfo": ["v1"],
   "coreOwnership": ["v1"]
 }
 ```
@@ -79,11 +80,12 @@ Returns the available schemas to generate from and the corresponding versions th
 ```js
 {
   role: [ 'v1' ],
-  project: [ 'v1' ],
+  projectSettings: [ 'v1' ],
   preset: [ 'v2' ],
   observation: [ 'v5' ],
+  icon: [ 'v2' ],
   field: [ 'v2' ],
-  device: [ 'v1' ],
+  deviceInfo: [ 'v1' ],
   coreOwnership: [ 'v1' ]
 }
 ```
