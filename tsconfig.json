@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": ["@tsconfig/node20/tsconfig.json"],
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
@@ -7,12 +7,10 @@
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "declarationDir": "./types",
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "declarationDir": "./types"
   },
-  "include": [
-    "./index.js",
-  ],
-  "exclude": [
-    "bin"
-  ]
+  "include": ["./index.js", "lib/**/*.js"],
+  "exclude": ["bin"]
 }
