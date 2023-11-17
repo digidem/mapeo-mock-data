@@ -42,7 +42,7 @@ if (values.version !== undefined && typeof values.version !== 'string')
 // TODO: Ideally validate the parsed int
 const count = values.count ? Number.parseInt(values.count, 10) : 1
 
-const data = await generate(values.schema, { count, version: values.version })
+const data = generate(values.schema, { count, version: values.version })
 
 if (values.output) {
   const outputPath = path.resolve(process.cwd(), values.output)

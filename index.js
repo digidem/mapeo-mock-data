@@ -16,9 +16,9 @@ export function listSchemas() {
 /**
  * @param {import('@mapeo/schema/dist/types.js').SchemaName} schemaName
  * @param {{version?: string, count?: number}} [options]
- * @returns {Promise<Array<import('@mapeo/schema').MapeoDoc>>}
+ * @returns {Array<import('@mapeo/schema').MapeoDoc>}
  */
-export async function generate(schemaName, { count } = {}) {
+export function generate(schemaName, { count } = {}) {
   isValidSchemaName(schemaName)
 
   const targetSchema = docSchemas[schemaName]
@@ -30,7 +30,7 @@ export async function generate(schemaName, { count } = {}) {
   for (let i = 0; i < numberToGenerate; i++) {
     result.push(
       /** @type {import('@mapeo/schema').MapeoDoc} */ (
-        await JSONSchemaFaker.resolve(createFakerSchema(targetSchema))
+        JSONSchemaFaker.generate(createFakerSchema(targetSchema))
       ),
     )
   }
