@@ -19,9 +19,6 @@
     "list-mapeo-schemas": "./bin/list-mapeo-schemas.js",
     "generate-mapeo-data": "./bin/generate-mapeo-data.js"
   },
-  "exports": {
-    ".": "./index.js"
-  },
   "scripts": {
     "prepare": "husky install",
     "format": "prettier **/*.js --write",
