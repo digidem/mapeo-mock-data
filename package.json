@@ -1,5 +1,5 @@
 {
-  "name": "mapeo-mock-data",
+  "name": "@mapeo/mock-data",
   "version": "0.0.0",
   "description": "Module and CLI to generate mock data for Mapeo",
   "keywords": [
