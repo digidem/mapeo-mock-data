@@ -4,8 +4,6 @@ Module and CLI to generate fake data for Mapeo
 
 ## Installation
 
-_This module is not published yet, so the following instructions do not actually work yet_
-
 ```sh
 npm install @mapeo/mock-data
 ```
