@@ -64,7 +64,7 @@ npx generate-mapeo-data --schema observation --output observations.json
 
 #### `mapeoMockData.generate`
 
-`(schemaName: string, opts?: { version?: string, count?: number }) => Promise<Array<MapeoDoc>>`
+`(schemaName: string, opts?: { version?: string, count?: number }) => Array<MapeoDoc>`
 
 Returns mocked data for the specified `schemaName`, where `MapeoDoc` adheres to the schema definition associated with `schemaName`. Accepts the following `opts`:
 
