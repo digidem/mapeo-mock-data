@@ -16,8 +16,8 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "bin": {
-    "list-mapeo-schemas": "./bin/list-mapeo-schemas.js",
-    "generate-mapeo-data": "./bin/generate-mapeo-data.js"
+    "list-mapeo-schemas": "bin/list-mapeo-schemas.js",
+    "generate-mapeo-data": "bin/generate-mapeo-data.js"
   },
   "scripts": {
     "prepare": "husky install",
