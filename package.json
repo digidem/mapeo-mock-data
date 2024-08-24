@@ -1,6 +1,6 @@
 {
   "name": "@mapeo/mock-data",
-  "version": "1.0.2",
+  "version": "1.0.3-alpha.1",
   "description": "Module and CLI to generate mock data for Mapeo",
   "keywords": [
     "mapeo",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
-    "@mapeo/schema": "file:mapeo-schema-3.0.0-next.16.tgz",
+    "@mapeo/schema": "3.0.0-next.20",
     "json-schema-faker": "^0.5.3",
     "type-fest": "^4.8.0"
   },
