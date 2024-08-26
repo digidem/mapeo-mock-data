@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
-    "@mapeo/schema": "3.0.0-next.20",
     "json-schema-faker": "^0.5.3",
     "type-fest": "^4.8.0"
   },
@@ -40,6 +39,9 @@
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
     "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "@mapeo/schema": "^3.0.0-next.21"
   },
   "prettier": {
     "semi": false,
