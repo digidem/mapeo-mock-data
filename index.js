@@ -1,4 +1,4 @@
-import { docSchemas } from '@mapeo/schema'
+import { docSchemas } from '@comapeo/schema'
 import { JSONSchemaFaker, createFakerSchema } from './lib/faker.js'
 import { extractSchemaVersion, isValidSchemaName } from './lib/schema.js'
 
@@ -14,10 +14,10 @@ export function listSchemas() {
 }
 
 /**
- * @template {import('@mapeo/schema/dist/types.js').SchemaName} TSchemaName
+ * @template {import('@comapeo/schema/dist/types.js').SchemaName} TSchemaName
  * @param {TSchemaName} schemaName
  * @param {{version?: string, count?: number}} [options]
- * @returns {Array<Extract<import('@mapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>}
+ * @returns {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>}
  */
 export function generate(schemaName, { count } = {}) {
   isValidSchemaName(schemaName)
@@ -25,12 +25,12 @@ export function generate(schemaName, { count } = {}) {
   const targetSchema = docSchemas[schemaName]
   const numberToGenerate = count || 1
 
-  /** @type {Array<Extract<import('@mapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>} */
+  /** @type {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>} */
   const result = []
 
   for (let i = 0; i < numberToGenerate; i++) {
     result.push(
-      /** @type {Extract<import('@mapeo/schema').MapeoDoc, { schemaName: TSchemaName }>} */ (
+      /** @type {Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>} */ (
         JSONSchemaFaker.generate(createFakerSchema(targetSchema))
       ),
     )

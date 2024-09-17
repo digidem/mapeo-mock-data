@@ -1,6 +1,6 @@
 # Mapeo Mock Data
 
-Module and CLI to generate fake data for Mapeo
+Module and CLI to generate fake data for CoMapeo
 
 ## Installation
 
@@ -37,7 +37,7 @@ example output:
 
 #### `generate-mapeo-data`
 
-Generates JSON-formatted Mapeo data based on [`@mapeo/schema`](https://github.com/digidem/mapeo-schema/).
+Generates JSON-formatted Mapeo data based on [`@comapeo/schema`](https://github.com/digidem/comapeo-schema/).
 
 - `--schema, -s`: specifies the schema to generate data for. Use the `list-mapeo-schemas` command to learn which ones are available.
 - `--version, -v`: (_optional_) specifies the schema version to use for `--schema`. Uses latest version by default.
