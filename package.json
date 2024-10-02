@@ -1,6 +1,6 @@
 {
   "name": "@mapeo/mock-data",
-  "version": "1.0.3-alpha.7",
+  "version": "2.0.0",
   "description": "Module and CLI to generate mock data for Mapeo",
   "keywords": [
     "mapeo",
@@ -41,7 +41,7 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@comapeo/schema": "^1.0.0"
+    "@comapeo/schema": "^1.1.0"
   },
   "prettier": {
     "semi": false,
