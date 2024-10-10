@@ -9,7 +9,8 @@
     "emitDeclarationOnly": true,
     "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true,
-    "declarationDir": "./types"
+    "declarationDir": "./types",
+    "resolveJsonModule": true
   },
   "include": ["./index.js", "lib/**/*.js"],
   "exclude": ["bin"]
