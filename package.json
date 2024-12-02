@@ -31,10 +31,10 @@
     "prepack": "npm run type"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.3.1",
+    "@faker-js/faker": "^9.2.0",
     "dereference-json-schema": "^0.2.1",
-    "json-schema-faker": "^0.5.3",
-    "type-fest": "^4.8.0"
+    "json-schema-faker": "^0.5.8",
+    "type-fest": "^4.29.1"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
