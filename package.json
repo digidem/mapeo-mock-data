@@ -21,8 +21,12 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier **/*.js --write",
-    "lint": "eslint . --cache --fix",
+    "format": "prettier --write .",
+    "test:eslint": "eslint . --cache",
+    "test:prettier": "prettier --check **/*.js",
+    "test:typescript": "npm run type",
+    "test:node": "node --test",
+    "test": "npm-run-all --aggregate-output --print-label --parallel test:*",
     "type": "tsc",
     "prepack": "npm run type"
   },
@@ -38,6 +42,7 @@
     "eslint": "^8.53.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
+    "npm-run-all2": "^7.0.1",
     "prettier": "^3.1.0",
     "typescript": "^5.2.2"
   },
