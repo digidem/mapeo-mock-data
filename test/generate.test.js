@@ -1,8 +1,9 @@
-import { encode } from '@comapeo/schema'
+import { encode, validate, valueOf } from '@comapeo/schema'
+import assert from 'node:assert/strict'
 import test from 'node:test'
 import { generate, listSchemas } from '../index.js'
 
-test('generates encodable data', { concurrency: true }, async (t) => {
+test('generates valid data', { concurrency: true }, async (t) => {
   const COUNT = 1000
 
   const schemaNames = Object.keys(listSchemas())
@@ -11,6 +12,7 @@ test('generates encodable data', { concurrency: true }, async (t) => {
     if (schemaName === 'coreOwnership') continue
     await t.test(schemaName, () => {
       for (const doc of generate(schemaName, { count: COUNT })) {
+        assert(validate(schemaName, valueOf(doc)), 'doc is valid')
         // This should not throw.
         encode(doc)
       }
@@ -19,6 +21,7 @@ test('generates encodable data', { concurrency: true }, async (t) => {
 
   await t.test('coreOwnership', () => {
     for (const doc of generate('coreOwnership', { count: COUNT })) {
+      assert(validate('coreOwnership', doc), 'doc is valid')
       // This should not throw.
       encode({
         ...doc,
