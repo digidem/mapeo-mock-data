@@ -23,7 +23,7 @@
     "prepare": "husky install",
     "format": "prettier --write .",
     "test:eslint": "eslint . --cache",
-    "test:prettier": "prettier --check **/*.js",
+    "test:prettier": "prettier --cache --check **/*.js",
     "test:typescript": "npm run type",
     "test:node": "node --test",
     "test": "npm-run-all --aggregate-output --print-label --parallel test:*",
