@@ -30,3 +30,11 @@ test('generates valid data', { concurrency: true }, async (t) => {
     }
   })
 })
+
+test('passing count=0 returns an empty array', () => {
+  const schemaNames = Object.keys(listSchemas())
+
+  for (const schemaName of schemaNames) {
+    assert.deepEqual(generate(schemaName, { count: 0 }), [])
+  }
+})
