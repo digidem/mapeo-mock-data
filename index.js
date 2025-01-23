@@ -35,7 +35,7 @@ function getFakerSchema(schemaName) {
  * @param {{version?: string, count?: number}} [options]
  * @returns {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>}
  */
-export function generate(schemaName, { count = 0 } = {}) {
+export function generate(schemaName, { count = 1 } = {}) {
   isValidSchemaName(schemaName)
 
   const schema = getFakerSchema(schemaName)
