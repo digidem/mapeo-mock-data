@@ -38,3 +38,11 @@ test('passing count=0 returns an empty array', () => {
     assert.deepEqual(generate(schemaName, { count: 0 }), [])
   }
 })
+
+test('defaults to count=1', () => {
+  const schemaNames = Object.keys(listSchemas())
+
+  for (const schemaName of schemaNames) {
+    assert.equal(generate(schemaName).length, 1)
+  }
+})
