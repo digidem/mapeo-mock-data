@@ -35,17 +35,15 @@ function getFakerSchema(schemaName) {
  * @param {{version?: string, count?: number}} [options]
  * @returns {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>}
  */
-export function generate(schemaName, { count } = {}) {
+export function generate(schemaName, { count = 0 } = {}) {
   isValidSchemaName(schemaName)
 
   const schema = getFakerSchema(schemaName)
 
-  const numberToGenerate = count || 1
-
   /** @type {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>} */
   const result = []
 
-  for (let i = 0; i < numberToGenerate; i++) {
+  for (let i = 0; i < count; i++) {
     result.push(
       /** @type {Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>} */ (
         JSONSchemaFaker.generate(schema)
