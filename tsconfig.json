@@ -20,6 +20,6 @@
     "target": "ES2022",
     "verbatimModuleSyntax": true
   },
-  "include": ["./index.js", "lib/**/*.js"],
-  "exclude": ["bin"]
+  "include": ["**/*.js"],
+  "exclude": ["node_modules", "types", "bin"]
 }

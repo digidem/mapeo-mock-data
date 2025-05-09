@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+// @ts-check
 import fs from 'node:fs'
 import path from 'node:path'
 import { parseArgs } from 'node:util'
 
 import { generate } from '../index.js'
+import { isValidSchemaName } from '../lib/schema.js'
 
 const { values } = parseArgs({
   strict: true,
@@ -41,6 +43,8 @@ if (values.version !== undefined && typeof values.version !== 'string')
 
 // TODO: Ideally validate the parsed int
 const count = values.count ? Number.parseInt(values.count, 10) : 1
+
+isValidSchemaName(values.schema)
 
 const data = generate(values.schema, { count, version: values.version })
 

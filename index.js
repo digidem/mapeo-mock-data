@@ -1,6 +1,6 @@
 import { docSchemas } from '@comapeo/schema'
 import { JSONSchemaFaker, createFakerSchema } from './lib/faker.js'
-import { extractSchemaVersion, isValidSchemaName } from './lib/schema.js'
+import { extractSchemaVersion } from './lib/schema.js'
 /** @typedef {import('@comapeo/schema/dist/types.js').SchemaName} SchemaName */
 
 export function listSchemas() {
@@ -36,8 +36,6 @@ function getFakerSchema(schemaName) {
  * @returns {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>}
  */
 export function generate(schemaName, { count = 1 } = {}) {
-  isValidSchemaName(schemaName)
-
   const schema = getFakerSchema(schemaName)
 
   /** @type {Array<Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>>} */
@@ -46,7 +44,10 @@ export function generate(schemaName, { count = 1 } = {}) {
   for (let i = 0; i < count; i++) {
     result.push(
       /** @type {Extract<import('@comapeo/schema').MapeoDoc, { schemaName: TSchemaName }>} */ (
-        JSONSchemaFaker.generate(schema)
+        JSONSchemaFaker.generate(
+          // @ts-expect-error
+          schema,
+        )
       ),
     )
   }
