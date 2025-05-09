@@ -12,6 +12,11 @@
     "email": "andrewchou@fastmail.com"
   },
   "license": "MIT",
+  "files": [
+    "index.js",
+    "lib",
+    "types"
+  ],
   "type": "module",
   "main": "index.js",
   "types": "types/index.d.ts",
