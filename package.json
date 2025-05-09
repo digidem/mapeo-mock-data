@@ -33,7 +33,7 @@
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
     "dereference-json-schema": "^0.2.1",
-    "json-schema-faker": "^0.5.8"
+    "json-schema-faker": "^0.5.9"
   },
   "devDependencies": {
     "@comapeo/schema": "1.6.0",
