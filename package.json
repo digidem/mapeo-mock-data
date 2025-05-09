@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@comapeo/schema": "1.6.0",
-    "@tsconfig/node20": "^20.1.2",
     "@types/node": "^20.9.1",
     "eslint": "^8.53.0",
     "husky": "^9.1.7",
