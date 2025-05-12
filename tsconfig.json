@@ -3,14 +3,12 @@
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
-    "declarationDir": "./types",
-    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["ES2023"],
     "module": "Node16",
     "moduleResolution": "Node16",
-    "noEmit": false,
+    "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
@@ -21,5 +19,5 @@
     "verbatimModuleSyntax": true
   },
   "include": ["**/*.js"],
-  "exclude": ["node_modules", "types", "bin"]
+  "exclude": ["node_modules", "types"]
 }

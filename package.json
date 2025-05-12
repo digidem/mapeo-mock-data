@@ -25,15 +25,16 @@
     "generate-mapeo-data": "bin/generate-mapeo-data.js"
   },
   "scripts": {
-    "prepare": "husky",
+    "build": "tsc -p ./tsconfig.publish.json",
+    "clean": "rimraf ./types",
     "format": "prettier --write .",
+    "prepack": "npm-run-all clean build",
+    "prepare": "husky",
     "test:eslint": "eslint . --cache",
-    "test:prettier": "prettier --cache --check **/*.js",
-    "test:typescript": "npm run type",
     "test:node": "node --test",
-    "test": "npm-run-all --aggregate-output --print-label --parallel test:*",
-    "type": "tsc",
-    "prepack": "npm run type"
+    "test:prettier": "prettier --cache --check **/*.js",
+    "test:types": "tsc",
+    "test": "npm-run-all --aggregate-output --print-label --parallel test:*"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
@@ -51,6 +52,7 @@
     "lint-staged": "^15.5.2",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
+    "rimraf": "^5.0.10",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
