@@ -12,6 +12,11 @@
     "email": "andrewchou@fastmail.com"
   },
   "license": "MIT",
+  "files": [
+    "index.js",
+    "lib",
+    "types"
+  ],
   "type": "module",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -20,54 +25,38 @@
     "generate-mapeo-data": "bin/generate-mapeo-data.js"
   },
   "scripts": {
-    "prepare": "husky install",
+    "build": "tsc -p ./tsconfig.publish.json",
+    "clean": "rimraf ./types",
     "format": "prettier --write .",
+    "prepack": "npm-run-all clean build",
+    "prepare": "husky",
     "test:eslint": "eslint . --cache",
-    "test:prettier": "prettier --cache --check **/*.js",
-    "test:typescript": "npm run type",
     "test:node": "node --test",
-    "test": "npm-run-all --aggregate-output --print-label --parallel test:*",
-    "type": "tsc",
-    "prepack": "npm run type"
+    "test:prettier": "prettier --cache --check **/*.js",
+    "test:types": "tsc",
+    "test": "npm-run-all --aggregate-output --print-label --parallel test:*"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.2.0",
+    "@faker-js/faker": "^9.7.0",
     "dereference-json-schema": "^0.2.1",
-    "json-schema-faker": "^0.5.8",
-    "type-fest": "^4.29.1"
+    "json-schema-faker": "^0.5.9"
   },
   "devDependencies": {
     "@comapeo/schema": "1.6.0",
-    "@tsconfig/node20": "^20.1.2",
-    "@types/node": "^20.9.1",
-    "eslint": "^8.53.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
-    "npm-run-all2": "^7.0.1",
-    "prettier": "^3.1.0",
-    "typescript": "^5.2.2"
+    "@eslint/compat": "^1.2.9",
+    "@eslint/js": "^9.26.0",
+    "@types/node": "^18.19.100",
+    "eslint": "^9.26.0",
+    "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.5.3",
+    "rimraf": "^5.0.10",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "@comapeo/schema": "^1.6.0"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "env": {
-      "commonjs": true,
-      "es2021": true,
-      "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    }
-  },
-  "lint-staged": {
-    "*.{js,md}": "prettier --write"
   },
   "repository": {
     "type": "git",
