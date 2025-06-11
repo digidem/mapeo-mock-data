@@ -37,7 +37,7 @@
     "test": "npm-run-all --aggregate-output --print-label --parallel test:*"
   },
   "peerDependencies": {
-    "@comapeo/schema": "^1.7.0"
+    "@comapeo/schema": "^2.0.0"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
@@ -45,7 +45,7 @@
     "json-schema-faker": "^0.5.9"
   },
   "devDependencies": {
-    "@comapeo/schema": "1.7.0",
+    "@comapeo/schema": "2.0.0",
     "@eslint/compat": "^1.2.9",
     "@eslint/js": "^9.26.0",
     "@types/node": "^18.19.100",
