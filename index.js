@@ -1,5 +1,5 @@
 import { docSchemas } from '@comapeo/schema'
-import { JSONSchemaFaker, createFakerSchema } from './lib/faker.js'
+import { JSONSchemaFaker, createFakerSchema, setSeed } from './lib/faker.js'
 import { extractSchemaVersion } from './lib/schema.js'
 /** @typedef {import('@comapeo/schema/dist/types.js').SchemaName} SchemaName */
 
@@ -19,12 +19,20 @@ const fakerSchemaCache = new Map()
 
 /**
  * @param {SchemaName} schemaName
+ * @param {string | number} [seed] - optional deterministic seed
  */
-function getFakerSchema(schemaName) {
+function getFakerSchema(schemaName, seed) {
+  // If a seed is provided, initialize RNG & faker
+  if (seed !== undefined) {
+    setSeed(seed)
+  }
+
   const cached = fakerSchemaCache.get(schemaName)
   if (cached) return cached
+
   const targetSchema = docSchemas[schemaName]
   const result = createFakerSchema(targetSchema)
+
   fakerSchemaCache.set(schemaName, result)
   return result
 }
